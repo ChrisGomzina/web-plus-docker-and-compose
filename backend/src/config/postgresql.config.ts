@@ -10,12 +10,11 @@ export const getPostgreSqlConfig = async (
 ): Promise<TypeOrmModuleOptions> => {
   return {
     type: 'postgres',
-    host: 'localhost',
-    port: configService.get('SQL_PORT') || 5432,
-    username: 'student',
-    password: configService.get('SQL_PASSWORD') || 'student',
-    database: 'kupipodariday',
-    schema: 'nest_project',
+    host: configService.get('POSTGRES_HOST') || 'postgres',
+    port: configService.get('POSTGRES_PORT') || 5432,
+    username: configService.get('POSTGRES_USER') || 'postgres',
+    password: configService.get('POSTGRES_PASSWORD') || 'password',
+    database: configService.get('POSTGRES_DB') || 'postgres',
     entities: [User, Wish, Offer, Wishlist],
     synchronize: true,
   };
